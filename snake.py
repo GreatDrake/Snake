@@ -2,6 +2,7 @@ import pygame
 import sys
 import random 
 import time
+import os.path 
 
 pygame.init()
 
@@ -16,15 +17,15 @@ dis_height = 760
 displayg = pygame.display.set_mode((dis_width, dis_height))
 pygame.display.set_caption('Snake')
 
-icon = pygame.image.load('Resources/snake.png')
+icon = pygame.image.load(os.path.join('Resources', 'snake.png'))
 pygame.display.set_icon(icon)
 
 fpsClock = pygame.time.Clock()
-appl = pygame.image.load('Resources/app.png')
-hdImg = pygame.image.load('Resources/snakehd.png')
-bod = pygame.image.load('Resources/snakebd.png')
-background = pygame.image.load('Resources/grass.png')
-tail = pygame.image.load('Resources/snaketail.png')
+appl = pygame.image.load(os.path.join('Resources', 'app.png'))
+hdImg = pygame.image.load(os.path.join('Resources', 'snakehd.png'))
+bod = pygame.image.load(os.path.join('Resources', 'snakebd.png'))
+background = pygame.image.load(os.path.join('Resources', 'grass.png'))
+tail = pygame.image.load(os.path.join('Resources', 'snaketail.png'))
 direction = 'right'
 sqr_size = 20
 fps = 12
@@ -182,7 +183,7 @@ def gameLoop():
             
         if ((sqr_x + sqr_size  > randAppleX and sqr_x < randAppleX + app_thick) and 
             (sqr_y + sqr_size  > randAppleY and sqr_y < randAppleY + app_thick)):
-            applSound = pygame.mixer.Sound('Resources\eat_apple.wav')
+            applSound = pygame.mixer.Sound(os.path.join('Resources', 'eat_apple.wav'))
             applSound.play()
             fps += 0.4
             snakeLength += 2
